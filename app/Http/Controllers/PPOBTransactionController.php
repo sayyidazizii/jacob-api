@@ -337,4 +337,10 @@ class PPOBTransactionController extends Controller
 
         return $response;
     }
+
+
+    public function test(){
+        $test = 'test success';
+        return $test;
+    }
 }

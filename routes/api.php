@@ -26,6 +26,8 @@ use App\Http\Controllers\WhatsappOTPController;
 
 //Protected Route
 // Route::group(['middleware'=> ['auth:sanctum'], 'throttle:70,10'], function(){
+    Route::get('/test', [PPOBTransactionController::class, 'test']);
+
     Route::get('/ppob-transaction', [PPOBTransactionController::class, 'index']);
     Route::post('/ppob-transaction', [PPOBTransactionController::class, 'store']);
     Route::get('/ppob-transaction/{id}', [PPOBTransactionController::class, 'show']);
