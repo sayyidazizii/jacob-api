@@ -55,7 +55,7 @@ use App\Http\Controllers\WhatsappOTPController;
     Route::post('/ppob/pln/prepaid', [ListrikTransactionController::class, 'getPPOBPLNPrePaid']);
     Route::post('/ppob/pln/prepaid/payment', [ListrikTransactionController::class, 'paymentPPOBPLNPrePaid']);
 
-    Route::get('ppob/emoney/category', [EMoneyTransactionController::class, 'getPPOBTopUpEmoneyCategory']);
+    Route::get('/ppob/emoney/category', [EMoneyTransactionController::class, 'getPPOBTopUpEmoneyCategory']);
     Route::post('/ppob/emoney/product', [EMoneyTransactionController::class, 'getPPOBTopUpEmoneyProduct']);
     Route::post('/ppob/emoney/payment', [EMoneyTransactionController::class, 'paymentPPOBTopUpEmoney']);
 
