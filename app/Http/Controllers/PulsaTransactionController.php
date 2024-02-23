@@ -70,10 +70,10 @@ class PulsaTransactionController extends Controller
             $ppob_balance   = 0;
         }
 
-        $database 					            = env('DB_DATABASE3', 'forge');  
+        $database 					            = env('DB_DATABASE_3', 'forge');  
         $ppob_company_id_json			        = PPOBCompanyCipta::where('ppob_company_database', '=', $database)->where('data_state', '=', 0)->first();
         $ppob_company_id                        = $ppob_company_id_json['ppob_company_id'];
-        $ppob_company_id                        = 2;
+        $ppob_company_id                        = 5;
 
         $data_inquiry[0]    = array (
             'nova'              => $request->phone_number,
@@ -83,12 +83,14 @@ class PulsaTransactionController extends Controller
         $data = array();
 
         $data['url']        = 'https://ciptapro.com/cst_ciptasolutindo/api/ppob/pulsa-prabayar/inquiry';
-        $data['apikey']     = '$2y$10$pIWLU8/X0m4GGTdkhWAaJOt/ivDhhmyH64kOq//0sbRCgbk8Gw71q';
-        $data['secretkey']  = '$2y$10$vswAf9Tq78bbCCSf0Q99EuHzV5K67xGzGfJUS0Ld51XhJMKNMCvym';
+        $data['apikey']     = '$2y$10$gDc0mL8B4TePN6jYgRPGEeHj7UZ9AfIh3jVwP0NC8jH2IvEoX.6f6';
+        $data['secretkey']  = '$2y$10$GVtrF7I1m.VtFiWh5gHHe7MdEHVJIsbyV7u5Qiwfw1XBf.lORaG';
         $data['content']    = json_encode($data_inquiry);
 
 
         $inquiry_data       = json_decode($this->apiTrans($data), true);
+
+        // dd($inquiry_data);
 
         /* foreach ($inquiry_data['data'] as $key => $val){
             $ppobproduct = NEW PPOBProduct();
@@ -115,7 +117,23 @@ class PulsaTransactionController extends Controller
 
                 /* $price                  = ceil($val['price'] + $settingPrice['setting_price_fee']); */
 
-                $ppob_product_price     = ceil($val['price'] + $ppobproduct['ppob_product_margin']);
+                if ($ppobproduct !== null) {
+                    $ppob_product_price = $val['price'] + $ppobproduct['ppob_product_margin'];
+                } else {
+                    // Handle case where product is not found
+                    // For example, set $ppob_product_price to a default value
+                    $ppob_product_price = 0;
+                }
+
+                if ($ppobproduct !== null) {
+                    $margin = $ppobproduct['ppob_product_margin'];
+                } else {
+                    // Handle case where product is not found
+                    // For example, set $ppob_product_price to a default value
+                    $margin = 0;
+                }
+                
+                // dd($ppob_product_price);
 
                 $ppobpulsaprepaidproduct[$no]['ppob_product_code']             = $val['product_id'];
                 $ppobpulsaprepaidproduct[$no]['ppob_product_name']             = $val['voucher']." ".$val['nominal'];
@@ -123,7 +141,7 @@ class PulsaTransactionController extends Controller
                 $ppobpulsaprepaidproduct[$no]['ppob_product_cost']             = $val['nominal'];
                 $ppobpulsaprepaidproduct[$no]['ppob_product_price']            = $ppob_product_price;
                 $ppobpulsaprepaidproduct[$no]['ppob_product_fee']              = $settingPrice['setting_price_fee'];
-                $ppobpulsaprepaidproduct[$no]['ppob_product_commission']       = $ppobproduct['ppob_product_margin'];
+                $ppobpulsaprepaidproduct[$no]['ppob_product_commission']       = $margin;
                 $ppobpulsaprepaidproduct[$no]['ppob_product_default_price']    = $val['price'];
                 $ppobpulsaprepaidproduct[$no]['id_transaksi']                  = $inquiry_data['id_transaksi'];
 
@@ -206,7 +224,7 @@ class PulsaTransactionController extends Controller
         }
 
         /* Saldo Simpanan Dana PPOB madani */
-        $database 					            = env('DB_DATABASE3', 'forge');  
+        $database 					            = env('DB_DATABASE_3', 'forge');  
         $ppob_company_id_json			        = PPOBCompanyCipta::where('ppob_company_database', '=', $database)->where('data_state', '=', 0)->first();
         $ppob_company_id                        = $ppob_company_id_json['ppob_company_id'];
         $ppob_company_id            = 2;
@@ -260,8 +278,8 @@ class PulsaTransactionController extends Controller
                     /* return $data_inquiry; */
 
                     $data['url']            = 'https://ciptapro.com/cst_ciptasolutindo/api/ppob/pulsa-prabayar/payment';
-                    $data['apikey']         = '$2y$10$pIWLU8/X0m4GGTdkhWAaJOt/ivDhhmyH64kOq//0sbRCgbk8Gw71q';
-                    $data['secretkey']      = '$2y$10$vswAf9Tq78bbCCSf0Q99EuHzV5K67xGzGfJUS0Ld51XhJMKNMCvym';
+                    $data['apikey']         = '$2y$10$gDc0mL8B4TePN6jYgRPGEeHj7UZ9AfIh3jVwP0NC8jH2IvEoX.6f6';
+                    $data['secretkey']      = '$2y$10$GVtrF7I1m.VtFiWh5gHHe7MdEHVJIsbyV7u5Qiwfw1XBf.lORaG';
                     $data['content']        = json_encode($data_inquiry);
 
                     $inquiry_data           = json_decode($this->apiTrans($data), true);

@@ -124,12 +124,13 @@ class PPOBTransactionController extends Controller
             'error'						=> FALSE,
             'error_msg'					=> "",
             'error_msg_title'			=> "",
-            'ppobtransaction'				=> "",
+            'ppobtransaction'			=> "",
         );
 
+        // dd($member_id);
         
         if($response["error"] == FALSE){
-            $database 			        = env('DB_DATABASE3', 'forge');
+            $database 			        = env('DB_DATABASE_3', 'forge');
             $ppob_company_id_json	    = PPOBCompanyCipta::where('ppob_company_database', '=', $database)->where('data_state', '=', 0)->first();
             $ppob_company_id            = $ppob_company_id_json['ppob_company_id'];
 
@@ -192,7 +193,7 @@ class PPOBTransactionController extends Controller
 
         
         if($response["error"] == FALSE){
-            $database 			        = env('DB_DATABASE3', 'forge');
+            $database 			        = env('DB_DATABASE_3', 'forge');
             $ppob_company_id_json	    = PPOBCompanyCipta::where('ppob_company_database', '=', $database)->where('data_state', '=', 0)->first();
             $ppob_company_id            = $ppob_company_id_json['ppob_company_id'];
 
@@ -271,7 +272,7 @@ class PPOBTransactionController extends Controller
                     $response['error_msg_title'] 	= "No Data";
                     $response['error_msg'] 			= "Data Does Not Exist";
                 } else {
-
+                    $acctsavingsaccountppobinouthistory = 0;
                     foreach ($acctsavingsaccountlist as $key => $val){
                         $acctsavingsaccountppobinouthistory[$key]['ppob_transaction_title']		= 'PPOB Masuk';
                         $acctsavingsaccountppobinouthistory[$key]['ppob_transaction_date']			= date('d M Y H:i:s', strtotime($val['created_on']));
@@ -317,7 +318,7 @@ class PPOBTransactionController extends Controller
                     $response['error_msg_title'] 	= "No Data";
                     $response['error_msg'] 			= "Data Does Not Exist";
                 } else {
-
+                    $acctsavingsaccountppobinouthistory = 0;
                     foreach ($acctsavingsaccountlist as $key => $val){
                         $acctsavingsaccountppobinouthistory[$key]['ppob_transaction_title']			= 'PPOB Keluar';
                         $acctsavingsaccountppobinouthistory[$key]['ppob_transaction_date']			= date('d M Y H:i:s', strtotime($val['created_on']));

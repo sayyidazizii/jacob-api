@@ -78,8 +78,8 @@ class BPJSTransactionController extends Controller
             $data = array();
 
             $data['url']        = 'https://ciptapro.com/cst_ciptasolutindo/api/ppob/payment-bpjs/inquiry';
-            $data['apikey']     = '$2y$10$pIWLU8/X0m4GGTdkhWAaJOt/ivDhhmyH64kOq//0sbRCgbk8Gw71q';
-            $data['secretkey']  = '$2y$10$vswAf9Tq78bbCCSf0Q99EuHzV5K67xGzGfJUS0Ld51XhJMKNMCvym';
+            $data['apikey']     = '$2y$10$gDc0mL8B4TePN6jYgRPGEeHj7UZ9AfIh3jVwP0NC8jH2IvEoX.6f6';
+            $data['secretkey']  = '$2y$10$GVtrF7I1m.VtFiWh5gHHe7MdEHVJIsbyV7u5Qiwfw1XBf.lORaG';
             $data['content']    = json_encode($data_inquiry);
 
             $inquiry_data       = json_decode($this->apiTrans($data), true);
@@ -171,7 +171,7 @@ class BPJSTransactionController extends Controller
             }
 
             /* Saldo Dana PPOB madani */
-            $database 					            = env('DB_DATABASE3', 'forge');
+            $database 					            = env('DB_DATABASE_3', 'forge');
             $ppob_company_id_json	    = PPOBCompanyCipta::where('ppob_company_database', '=', $database)->where('data_state', '=', 0)->first();
             $ppob_company_id            = $ppob_company_id_json['ppob_company_id'];
             $ppob_company_id            = 2;
@@ -222,8 +222,8 @@ class BPJSTransactionController extends Controller
                         $data               = array();
 
                         $data['url']        = 'https://ciptapro.com/cst_ciptasolutindo/api/ppob/payment-bpjs/payment';
-                        $data['apikey']     = '$2y$10$pIWLU8/X0m4GGTdkhWAaJOt/ivDhhmyH64kOq//0sbRCgbk8Gw71q';
-                        $data['secretkey']  = '$2y$10$vswAf9Tq78bbCCSf0Q99EuHzV5K67xGzGfJUS0Ld51XhJMKNMCvym';
+                        $data['apikey']     = '$2y$10$gDc0mL8B4TePN6jYgRPGEeHj7UZ9AfIh3jVwP0NC8jH2IvEoX.6f6';
+                        $data['secretkey']  = '$2y$10$GVtrF7I1m.VtFiWh5gHHe7MdEHVJIsbyV7u5Qiwfw1XBf.lORaG';
                         $data['content']    = json_encode($data_inquiry);
 
                         $inquiry_data       = json_decode($this->apiTrans($data), true);
