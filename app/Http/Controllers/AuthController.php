@@ -19,8 +19,18 @@ use Illuminate\Support\Facades\Auth;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
  
-require_once "../vendor/autoload.php";
-// require_once "/var/www/html/jacob-api/vendor/autoload.php";
+// Tentukan lokasi vendor autoload.php
+$vendor1 = "../vendor/autoload.php";
+$vendor2 = "/var/www/html/jacob-api/vendor/autoload.php";
+
+// Periksa apakah vendor autoload.php pertama ada
+if (file_exists($vendor1)) {
+    require_once $vendor1;
+} else {
+    require_once $vendor2;
+}
+
+
 // require_once "constants.php";
 
 // require_once '/home/ciptaprocpanel/public_html/sudama-api/vendor/autoload.php';
