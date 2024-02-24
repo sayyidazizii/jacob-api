@@ -51,10 +51,10 @@ $current_url_segment = end($urlSegments);
         <div class="site-navigation text-center">
           <a href="index.html" class="logo menu-absolute m-0"></a>
           <ul class="js-clone-nav d-none d-lg-inline-block site-menu">
-            <li class=" <?php echo ($current_url_segment == 'documentation') ? 'active' : ''; ?>"><a href="/documentation">Home</a></li>
-            <li class=" <?php echo ($current_url_segment == 'backoffice') ? 'active' : ''; ?>"><a href="/documentation/backoffice">Back Office</a></li>
-            <li class=" <?php echo ($current_url_segment == 'ppob') ? 'active' : ''; ?>"><a href="/documentation/ppob">PPOB</a></li>
-            <li class=" <?php echo ($current_url_segment == 'whatsapp') ? 'active' : ''; ?>"><a href="/documentation/whatsapp">Whatsapp</a></li>
+            <li class=" <?php echo ($current_url_segment == 'documentation') ? 'active' : ''; ?>"><a href="{{ route('index') }}">Home</a></li>
+            <li class=" <?php echo ($current_url_segment == 'backoffice') ? 'active' : ''; ?>"><a href="{{ route('backoffice') }}">Back Office</a></li>
+            <li class=" <?php echo ($current_url_segment == 'ppob') ? 'active' : ''; ?>"><a href="{{ route('ppob') }}">PPOB</a></li>
+            <li class=" <?php echo ($current_url_segment == 'whatsapp') ? 'active' : ''; ?>"><a href="{{ route('whatsapp') }}">Whatsapp</a></li>
           </ul>
           <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
             <span></span>
