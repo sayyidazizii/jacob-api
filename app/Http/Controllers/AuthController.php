@@ -27,7 +27,7 @@ $vendor2 = "/var/www/html/jacob-api/vendor/autoload.php";
 if (file_exists($vendor1)) {
     require_once $vendor1;
 } else {
-    // require_once $vendor2;
+    require_once $vendor2;
 }
 
 
