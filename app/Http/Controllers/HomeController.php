@@ -24,7 +24,7 @@ class HomeController extends Controller
     }
     public function whatsapp(){
 
-        $data = Documentation::where('type',1)->get();
+        $data = Documentation::where('type',3)->get();
         return view('whatsapp',compact('data'));
     }
 }

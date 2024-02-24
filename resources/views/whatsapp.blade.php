@@ -30,6 +30,7 @@
                                                     <thead>
                                                         <th>No</th>
                                                         <th>Name</th>
+                                                        <th>Method</th>
                                                         <th>Route</th>
                                                         <th>Request</th>
                                                         <th>Params</th>
@@ -40,6 +41,7 @@
                                                         {{-- <tr>
                                                             <td><?= $no++ ?></td>
                                                             <td><?= $value->name ?></td>
+                                                            <td><?= $value->method ?></td>
                                                             <td><?= $value->route ?></td>
                                                             <td><?= $value->request ?></td>
                                                             <td><?= $value->params ?></td>
