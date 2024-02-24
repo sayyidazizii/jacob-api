@@ -34,7 +34,7 @@
                                                         <th>Route</th>
                                                         <th>Request</th>
                                                         <th>Params</th>
-                                                        <th>Sample</th>
+                                                        <th>Example</th>
                                                     </thead>
                                                     <tbody id="myTable">
                                                         <?php foreach ($data as $value) { ?>
@@ -45,7 +45,7 @@
                                                             <td><?= $value->route ?></td>
                                                             <td><?= $value->request ?></td>
                                                             <td><?= $value->params ?></td>
-                                                            <td><?= $value->sample ?></td>
+                                                            <td><?= $value->Example ?></td>
 
                                                         </tr>
                                                         <?php } ?>
