@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [HomeController::class, 'documentation'])->name('index');
+Route::get('/documentation', [HomeController::class, 'index'])->name('index');
+Route::get('/documentation/backoffice', [HomeController::class, 'backOffice'])->name('backoffice');
+Route::get('/documentation/ppob', [HomeController::class, 'ppob'])->name('ppob');
+Route::get('/documentation/whatsapp', [HomeController::class, 'whatsapp'])->name('whatsapp');
+
