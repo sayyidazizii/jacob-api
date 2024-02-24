@@ -165,6 +165,8 @@ class AuthController extends Controller
             }
         }
 
+        $token = $user->createToken('token-name')->plainTextToken;
+
         if(($user->member_imei == null || $user->member_imei == '') && $user['block_state'] == 0) {
             $message                        = "Login";
 
@@ -181,11 +183,10 @@ class AuthController extends Controller
                 return response()->json([
                     'message'       => $message,
                     'otp_status'    => 1,
+                    'token' => $token
                 ], 400);
             }
         }
-
-        $token = $user->createToken('token-name')->plainTextToken;
 
         $response = [
             'data'  => $user,
