@@ -45,7 +45,7 @@
                                                             <td><?= $value->route ?></td>
                                                             <td><?= $value->request ?></td>
                                                             <td><?= $value->params ?></td>
-                                                            <td><?= $value->Example ?></td>
+                                                            <td><?= $value->sample ?></td>
 
                                                         </tr>
                                                         <?php } ?>
