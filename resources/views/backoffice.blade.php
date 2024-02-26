@@ -12,7 +12,7 @@
                         <div class="col-lg-12 text-center ">
                             <div class="card shadow">
                                 <div class="card-body">
-                                    base_url : https://ciptapro.id/jjm/
+                                    base_url : <a href="https://ciptapro.id/jjm/">https://ciptapro.id/jjm/</a> 
                                 </div>
                             </div>
                         </div>
