@@ -26,7 +26,7 @@ use App\Http\Controllers\WhatsappOTPController;
 
 //Protected Route
 // Route::group(['middleware'=> ['auth:sanctum'], 'throttle:70,10'], function(){
-Route::group(['middleware'=> ['auth:sanctum']], function(){
+// Route::group(['middleware'=> ['auth:sanctum']], function(){
 
     Route::get('/test', [PPOBTransactionController::class, 'test']);
 
@@ -75,7 +75,7 @@ Route::group(['middleware'=> ['auth:sanctum']], function(){
     
 
 
-});
+// });
 
 Route::group(['middleware'=> ['auth:sanctum']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
